@@ -7,17 +7,17 @@ import Items from './components/Items/Items';
 import backgroundImage from './supermarket.jpeg';
 
 function App() {
-  // const { user } = useContext(UserContext);
-
   return (
     <div className="App" style={{ backgroundImage: `url(${backgroundImage})` }}>
       <Header />
       <Switch>
         <Route path="/auth/:type" component={Auth} />
         <Route path="/items" component={Items} />
-        <Route exact path="/"></Route>
+        <Route exact path="/">
+          <Redirect to="/auth/sign-up" />
+        </Route>
         <Route path="*">
-          <Redirect to="/" />
+          <Redirect to="/auth/sign-up" />
         </Route>
       </Switch>
     </div>
