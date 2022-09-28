@@ -2,14 +2,26 @@ import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import './Auth.css';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { authUser } from '../../services/auth';
+import { UserContext } from '../../context/UserContext';
 
 export default function Auth() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const { user, setUser } = useContext(UserContext);
+
   const submitAuth = async () => {
     // TODO
+    const userResp = await authUser(email, password);
+    //type is still undefined here
+    console.log('Auth -------->', userResp);
+    //set user
+    setUser(userResp);
+    //reset imputs
+    setEmail('');
+    setPassword('');
   };
 
   return (
