@@ -16,6 +16,9 @@ function App() {
         <Route path="/auth/:type" component={Auth} />
         <Route path="/items" component={Items} />
         <Route exact path="/"></Route>
+        <Route path="*">
+          <Redirect to="/" />
+        </Route>
       </Switch>
     </div>
   );

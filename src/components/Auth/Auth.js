@@ -16,8 +16,6 @@ export default function Auth() {
   const submitAuth = async () => {
     // TODO
     const userResp = await authUser(email, password, type);
-    //type is still undefined here
-    console.log('Auth -------->', userResp);
     //set user
     setUser(userResp);
     //reset imputs
